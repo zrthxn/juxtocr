@@ -8,7 +8,7 @@ server.listen(PORT, ()=>{
     console.log("OCR View Server Started ::", PORT)
 })
 
-server.use( express.static('/static', path.join(__dirname, 'static')) )
+server.use( '/static', express.static(path.join(__dirname, 'static')) )
 
 server.get('*', (req, res)=>{
     res.sendFile( path.resolve(__dirname, 'views', 'index.html'))
