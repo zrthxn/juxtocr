@@ -5,7 +5,7 @@ const server = express()
 const PORT = 25737
 
 server.listen(PORT, ()=>{
-    console.log("OCR View Sever Started ::", PORT)
+    console.log("OCR View Server Started ::", PORT)
 })
 
 server.get('*', (req, res)=>{
