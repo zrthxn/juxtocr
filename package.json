@@ -6,9 +6,10 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
-    "express-handlebars": "^3.0.2",
     "express": "^4.16.4",
-    "node-tesseract": "^0.2.7",
+    "express-fileupload": "^1.1.4",
+    "express-handlebars": "^3.0.2",
+    "tesseract.js": "^1.0.14",
     "vhost": "^3.0.2"
   },
   "devDependencies": {},
