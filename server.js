@@ -17,6 +17,7 @@ server.use(bodyParser.urlencoded({ extended: true }))
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 server.use( '/static', express.static(path.join(__dirname, 'static')) )
+server.use( '/storage', express.static(path.join(__dirname, 'storage')) )
 server.listen(PORT, ()=>{
     console.log("OCR View Server Started ::", PORT)
 })
