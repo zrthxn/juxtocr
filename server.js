@@ -1,6 +1,6 @@
 const express = require('express')
+const hbs = require('express-handlebars')
 const path = require('path')
-const fs = require('fs')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const fileUpload = require('express-fileupload')
@@ -16,14 +16,26 @@ server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({ extended: true }))
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
+
 server.use( '/static', express.static(path.join(__dirname, 'static')) )
 server.use( '/storage', express.static(path.join(__dirname, 'storage')) )
 server.listen(PORT, ()=>{
     console.log("OCR View Server Started ::", PORT)
 })
 
+server.set('views', path.join(__dirname, 'views'))
+server.set('view engine', 'hbs')
+server.engine('hbs', hbs({
+    defaultLayout: 'main',
+    extname: 'hbs',
+    layoutsDir: __dirname + '/views/layouts',
+    partialsDir: [
+        __dirname + '/views/partials'
+    ]
+}))
+
 server.get('/', (req,res)=>{
-    res.sendFile( path.resolve(__dirname, 'views', 'index.html'))
+    res.render('index', {'title': 'JUXT OCR Server'})
 })
 
 server.post('/recognize', (req,res)=>{
@@ -32,7 +44,13 @@ server.post('/recognize', (req,res)=>{
             Tesseract.recognize(__dirname + '/storage/' + fileRef)
                 .then((result)=>{
                     console.log(result)
-                    res.json({ ref: fileRef, text: result.text })
+                    res.render('demo', {
+                        'title': 'JUXT OCR Server',
+                        'text': result.text,
+                        'data': {
+                            'ref': fileRef
+                        }
+                    })
                 })
         }).catch((err)=>{
             console.log(err)

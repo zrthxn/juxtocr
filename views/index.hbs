@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="/static/css/home.css" media="screen">
+
+{{!-- Page Content --}}
+{{> header }}
+
+<section>
+    <div class="about">
+        <article>
+            <!-- Juxt -->
+            Welcome to JUXT
+        </article>
+
+        <article>
+            <!-- Tesseract -->
+            <div>
+                Tesseract.js is a pure Javascript port of the popular Tesseract OCR engine. <br>
+                This library supports over 60 languages, automatic text orientation and script detection, 
+                a simple interface for reading paragraph, word, and character bounding boxes. <br><br>
+                
+                Tesseract.js can run either in a browser and on a server with NodeJS. <br><br>
+                
+                Check out the Example code and API docs on GitHub. <br>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section>
+    <h3><a name="demo">Demo</a></h3>
+    <article>
+        <div>
+            <form action="/recognize" method="POST" encType="multipart/form-data" class="form">
+                <input type="file" name="fileupload" id="file">
+                <input type="submit" class="button solid" id="upload" value="UPLOAD">
+            </form>
+        </div>
+    </article>    
+</section>
+
+{{> footer }}
+{{!-- End Page Content --}}

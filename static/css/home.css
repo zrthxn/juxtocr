@@ -1,0 +1,24 @@
+.hero {
+    padding: 2em;
+    text-align: center;
+    background-color: var(--main);
+}
+
+.title {
+    text-align: center;
+    margin: 3em 1.5em;
+}
+.title h1 {
+    font-size: 4em;
+}
+
+.about {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+.about * {
+    margin: auto;
+}
