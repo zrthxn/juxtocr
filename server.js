@@ -44,12 +44,12 @@ server.post('/recognize', (req,res)=>{
             Tesseract.recognize(__dirname + '/storage/' + fileRef)
                 .then((result)=>{
                     console.log(result)
-                    res.render('demo', {
+                    res.render('index', {
                         'title': 'JUXT OCR Server',
                         'text': result.text,
-                        'data': {
+                        'data': JSON.stringify({
                             'ref': fileRef
-                        }
+                        })
                     })
                 })
         }).catch((err)=>{

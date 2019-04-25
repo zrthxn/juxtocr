@@ -5,9 +5,12 @@
 
 <section>
     <div class="about">
+        <h3>Welcome to JUXT</h3>
         <article>
             <!-- Juxt -->
-            Welcome to JUXT
+            <div>
+                This is the OCR Server of juxt.in <br>
+            </div>
         </article>
 
         <article>
@@ -22,19 +25,22 @@
                 Check out the Example code and API docs on GitHub. <br>
             </div>
         </article>
-    </div>
-</section>
 
-<section>
-    <h3><a name="demo">Demo</a></h3>
-    <article>
-        <div>
-            <form action="/recognize" method="POST" encType="multipart/form-data" class="form">
-                <input type="file" name="fileupload" id="file">
-                <input type="submit" class="button solid" id="upload" value="UPLOAD">
-            </form>
-        </div>
-    </article>    
+        <h3><a name="demo">Demo</a></h3>
+        <article class="demo">
+            <div>
+                <form action="/recognize" method="POST" encType="multipart/form-data" class="form">
+                    <input type="file" name="fileupload" id="file">
+                    <input type="submit" class="button solid" id="upload" value="UPLOAD">
+                </form>
+            </div>
+
+            <div>
+                <p>{{ text }}</p>
+                <p>{{ data }}</p>
+            </div>
+        </article> 
+    </div>
 </section>
 
 {{> footer }}

@@ -143,7 +143,7 @@ function generateFileRef() {
     let secs = date.getSeconds()>=9 ? date.getSeconds().toString() : '0' + date.getSeconds().toString()
     let milis = date.getMilliseconds()
 
-    fileRef = parseInt(day + month + hours + mins + secs + milis).toString(36).substring(1)
+    fileRef = parseInt(hours + mins + secs + milis + day + month).toString(36).substring(1)
     return fileRef
 }
 
