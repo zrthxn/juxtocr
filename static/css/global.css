@@ -6,6 +6,7 @@
 
 :root {
     --main: #ff9e00;
+    --accent: #ffd800;
 }
 
 body {
@@ -28,5 +29,5 @@ article {
     background-color: #fff;
     text-decoration: none;
     color: #000;
-    box-shadow: 0 2px 25px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 25px 0 rgba(0, 0, 0, 0.25);
 }

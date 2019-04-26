@@ -1,7 +1,12 @@
 .hero {
     padding: 4em;
     text-align: center;
-    background-color: var(--main);
+    background: linear-gradient(var(--accent),var(--main));
+}
+.footer-hero {
+    padding: 4em;
+    text-align: center;
+    background: linear-gradient(var(--main),var(--accent));
 }
 
 .title {
