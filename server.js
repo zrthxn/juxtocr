@@ -35,7 +35,12 @@ server.engine('hbs', hbs({
 }))
 
 server.get('/', (req,res)=>{
-    res.render('index', {'title': 'JUXT OCR Server'})
+    res.render('index', {
+        'title': 'JUXT OCR Server',
+        'data': JSON.stringify({
+            'recognized': false
+        })
+    })
 })
 
 server.post('/recognize', (req,res)=>{
@@ -48,7 +53,8 @@ server.post('/recognize', (req,res)=>{
                         'title': 'JUXT OCR Server',
                         'text': result.text,
                         'data': JSON.stringify({
-                            'ref': fileRef
+                            'ref': fileRef,
+                            'recognized': true
                         })
                     })
                 })

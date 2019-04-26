@@ -26,20 +26,58 @@
 
         <h2><a name="demo">Demo</a></h2>
         <article class="demo">
-            <div>
-                <form action="/recognize" method="POST" encType="multipart/form-data" class="form">
-                    <input type="file" name="fileupload" id="file">
-                    <input type="submit" class="button solid" id="upload" value="UPLOAD">
+            <div id="recognize_form">
+                <form action="/recognize" method="POST" encType="multipart/form-data" class="form" id="form">
+                    <img src="" alt="" width="100%" id="recognized_image">
+                    <input type="file" name="fileupload" id="fileupload" class="inputfile" data-multiple-caption="{count} files selected">
+                    <label for="fileupload">Choose a File</label>
+                    {{!-- <input type="submit" class="button solid" id="upload" value="UPLOAD"> --}}
                 </form>
             </div>
 
-            <div>
-                <p>{{ text }}</p>
-                <p>{{ data }}</p>
+            <div id="recognized">
+                The recognized text will be shown here <br><br><br>
+                <div> 
+                    <p id="recognized_text">{{ text }}</p>
+                </div>
+                <p id="__data__" hidden="true">{{ data }}</p>
             </div>
         </article> 
     </div>
 </section>
+
+<script>
+    (function(){
+        var inputs = document.querySelectorAll( '.inputfile' );
+        inputs.forEach(function(input){
+            var label = input.nextElementSibling, labelVal = label.innerHTML;
+            input.addEventListener('change', function(e){
+                var fileName = '', flag=false;
+                if( this.files && this.files.length > 1 )
+                    fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+                else
+                    fileName = e.target.value.split( '\\' ).pop();
+
+                if(fileName) {
+                    label.innerHTML = fileName;
+                    document.getElementById("form").submit();
+                }
+                else
+                    label.innerHTML = labelVal;
+            });
+        });
+
+        var data = document.getElementById("__data__").innerHTML;
+        data = JSON.parse(data);
+        console.log(data);
+        if(data.recognized===true) {
+            document.getElementById("recognized_image").removeAttribute('hidden');
+            document.getElementById("recognized_image").setAttribute('src', '/storage/'+data.ref);
+        } else {
+            document.getElementById("recognized_image").setAttribute('hidden', 'true');
+        }
+    })()
+</script>
 
 {{> footer }}
 {{!-- End Page Content --}}
