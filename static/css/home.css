@@ -27,26 +27,40 @@
 .about * {
     margin: auto;
 }
-
 .demo {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
+@media(min-width: 600px) {
+    .demo {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
 #recognize_form {
-    margin: 1em auto;
-    padding: 1em;
-    max-width: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 1em 0;
 }
 #recognized {
-    font-size: 0.75em;
-    margin: 1em auto;
-    padding: 1em;
-    max-width: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 1em 0;
 }
 #recognized_text {
     font-size: 1.5em !important;
+}
+@media(min-width: 600px) {
+    #recognize_form {
+        margin: 1em auto;
+        padding: 1em;
+        max-width: 50%;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    #recognized {
+        font-size: 0.75em;
+        margin: 1em auto;
+        padding: 1em;
+        max-width: 50%;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
 }
 
 #form {
