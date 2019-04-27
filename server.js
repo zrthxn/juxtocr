@@ -48,7 +48,7 @@ server.post('/recognize', (req,res)=>{
         .then((fileRef)=>{
             Tesseract.recognize(__dirname + '/storage/' + fileRef)
                 .then((result)=>{
-                    console.log(result)
+                    console.log(result.text)
                     let text = (result.text).replace(/</g, '').replace(/>/g, '').replace(/\n/g, '<br>')
                     res.render('index', {
                         'title': 'JUXT OCR Server',
